@@ -27,7 +27,6 @@ function startGame() {
 }
 
 controls.addEventListener('click', () => {
-    console.log('alo')
     startGame();
 });
 
