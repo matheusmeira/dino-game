@@ -16,22 +16,30 @@ const scoreCounter = () => {
     score.innerHTML = `Score: <b>${playerScore}</b>`
 }
 
+function startGame() {
+    gameOver.style.display = 'none';
+    block.classList.add('blockActive');
+    road.firstElementChild.style.animation = 'animateRoad 1s linear infinite';
+    cloud.firstElementChild.style.animation = 'animateCloud 20s linear infinite';
+
+    playerScore = 0;
+    interval = setInterval(scoreCounter, 100);
+}
+
+controls.addEventListener('click', () => {
+    console.log('alo')
+    startGame();
+});
+
 window.addEventListener('keydown', (start) => {
     if(start.code == 'Space') {
-        gameOver.style.display = 'none';
-        block.classList.add('blockActive');
-        road.firstElementChild.style.animation = 'animateRoad 1s linear infinite';
-        cloud.firstElementChild.style.animation = 'animateCloud 20s linear infinite';
-        controls.style.display = 'none';
-
-        playerScore = 0;
-        interval = setInterval(scoreCounter, 100);
+        startGame();
     }
 })
 
 // Dinosaur jump
 
-window.addEventListener('keydown', (event) => {
+window.addEventListener('keydown' || 'touchstart', (event) => {
     if(event.key == 'ArrowUp' || event.key == 'w') {
         if(dino.classList != 'dinoActive') {
             dino.classList.add('dinoActive');
@@ -41,6 +49,17 @@ window.addEventListener('keydown', (event) => {
                 dino.classList.remove('dinoActive');
             }, 500);
         }
+    }
+})
+
+window.addEventListener('touchstart', (event) => {
+    if(dino.classList != 'dinoActive') {
+        dino.classList.add('dinoActive');
+
+        // remove class after 0.5s
+        setTimeout(() => {
+            dino.classList.remove('dinoActive');
+        }, 500);
     }
 })
 
