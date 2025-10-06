@@ -57,12 +57,12 @@ body {
     45%, 55% {
         bottom: 160px;
     }
-    from {
+    /* from {
         transform: rotate(0deg);
     }
     to {
         transform: rotate(360deg);
-    }
+    } */
 }
 
 #container #block {
